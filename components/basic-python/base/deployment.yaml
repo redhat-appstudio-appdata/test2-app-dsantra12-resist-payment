@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: basic-python
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: basic-python
+    app.kubernetes.io/part-of: test2-app
+  name: basic-python
+  namespace: dsantra12
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: basic-python
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: basic-python
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:dsantra12-basic-python
+        imagePullPolicy: Always
+        name: container-image
+        resources: {}
+status: {}
